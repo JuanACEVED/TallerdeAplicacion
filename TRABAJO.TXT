@@ -1,0 +1,158 @@
+//// clase principal
+
+
+package tallerdeapliacion;
+
+public class ClasePrincipalJA {
+
+	 public static void main(String[] args) {
+	       
+	        RobotJA robotJA = new RobotJA();
+	        robotJA.mostrarDetallesJA();
+
+	       
+	        OutfitJA uniformeJA = new UniformeJA("trabajador de Starbucks");
+	        robotJA.aplicarOutfitJA(uniformeJA);
+	        uniformeJA.usarOutfitJA();
+
+	        
+	        OutfitJA casualJA = new CasualJA("urbano");
+	        robotJA.aplicarOutfitJA(casualJA);
+	        casualJA.usarOutfitJA();
+	    }
+	
+}
+
+
+//////// ROBOT
+
+package tallerdeapliacion;
+
+public class RobotJA {
+	private ManosJA manoIzquierdaJA;
+    private CabezaJA cabezaJA;
+   
+    public RobotJA() {
+        this.manoIzquierdaJA = new ManosJA(5, false);
+        new ManosJA(5, true);
+        this.cabezaJA = new CabezaJA("Azul", false);
+    }
+
+    
+    public void aplicarOutfitJA(OutfitJA outfitJA) {
+        System.out.println("Aplicando outfit: " + outfitJA.getDescripcionJA());
+    }
+
+   
+    public void mostrarDetallesJA() {
+        System.out.println("Robot con ojos " + cabezaJA.getColorOjosJA() + " y " + manoIzquierdaJA.getDedosJA() + " dedos en cada mano.");
+    }
+}
+
+
+/////////// CABEZA
+
+
+package tallerdeapliacion;
+
+public class CabezaJA {
+	private String colorOjosJA;  
+    
+    public CabezaJA(String colorOjosJA, boolean tieneCascoJA) {
+        this.colorOjosJA = colorOjosJA;
+    }
+
+    
+    public void girarCabezaJA() {
+        System.out.println("Girando la cabeza.");
+    }
+
+    public String getColorOjosJA() {
+        return colorOjosJA;
+    }
+}
+
+//// ROPA CASUAL 
+
+package tallerdeapliacion;
+
+public class CasualJA extends OutfitJA{
+	private String estiloCasualJA;  
+
+    
+    public CasualJA(String estiloCasualJA) {
+        this.estiloCasualJA = estiloCasualJA;
+        this.descripcionJA = "Ropa casual estilo " + estiloCasualJA;
+    }
+
+   
+    public void usarOutfitJA() {
+        System.out.println("El robot está usando ropa casual estilo " + estiloCasualJA);
+    }
+}
+
+///// MANOS
+
+
+
+public class ManosJA {
+	private int dedosJA; 
+    private boolean esDerechaJA;  
+
+    // Constructor
+    public ManosJA(int dedosJA, boolean esDerechaJA) {
+        this.dedosJA = dedosJA;
+        this.esDerechaJA = esDerechaJA;
+    }
+
+   
+    public void moverDedosJA() {
+        System.out.println("Moviendo los dedos de la mano " + (esDerechaJA ? "derecha" : "izquierda") + ".");
+    }
+
+    public int getDedosJA() {
+        return dedosJA;
+    }
+}
+
+
+///// Outfit
+
+
+public class OutfitJA {
+	 protected String descripcionJA;  
+
+	    public String getDescripcionJA1() {
+	        return descripcionJA;
+	    }
+
+	    public void usarOutfitJA() {
+		}
+
+		public String getDescripcionJA() {
+			
+			return null;
+		}
+}
+
+
+/// uniforme
+
+public class UniformeJA extends OutfitJA {
+	 private String tipoUniformeJA;  
+
+	    
+	    public UniformeJA(String tipoUniformeJA) {
+	        this.tipoUniformeJA = tipoUniformeJA;
+	        this.descripcionJA = "Uniforme de " + tipoUniformeJA;
+	    }
+
+	    
+	    public void usarOutfitJA() {
+	        System.out.println("El robot está usando un " + tipoUniformeJA);
+	    }
+	}
+
+
+
+
